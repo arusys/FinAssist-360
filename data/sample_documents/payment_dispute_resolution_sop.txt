@@ -1,0 +1,38 @@
+# STANDARD OPERATING PROCEDURE: UPI & PAYMENT DISPUTE RESOLUTION
+Document ID: SOP-PAY-2024-09
+Department: Retail Payments & Settlements
+Category: Payment processing procedures
+Last Updated: October 2024
+Classification: Confidential Banking Procedure
+
+1. OVERVIEW & SCOPE
+This document outlines standard operating procedures for resolving payment disputes arising from Unified Payments Interface (UPI), Immediate Payment Service (IMPS), and National Electronic Funds Transfer (NEFT) operations. This applies to all customer complaints where money is debited from the remitter account but not credited to the beneficiary merchant or individual account.
+
+2. SYSTEM ARCHITECTURE & TRANSACTION CYCLE
+UPI transactions operate across three distinct hops:
+- Remitter Bank Core Banking System (CBS)
+- National Payments Corporation of India (NPCI) Switch / Payment Gateway
+- Beneficiary Bank CBS
+
+When a transaction fails or times out during transit, it enters one of the following states:
+- PENDING_DEBIT: Remitter account debited, awaiting NPCI Switch response.
+- TIMEOUT_FAILED: NPCI network timeout; auto-reversal triggered within T+1 working days.
+- DUPLICATE_SUSPECT: Multiple debits detected for a single Remitter Reference Number (RRN).
+
+3. INVESTIGATION & RECONCILIATION PROCEDURES
+Step 1: RRN Verification
+Upon receiving a customer complaint, the support agent must obtain the 12-digit Retrieval Reference Number (RRN) or Transaction Reference ID. Check the transaction status against the CBS transaction ledger and NPCI switch log.
+
+Step 2: Auto-Reversal Verification (T+1 SLA)
+According to Central Banking guidelines, if a customer's account is debited without successful transaction completion, the remitter bank has T+1 business days to automatically reverse the funds into the customer's account.
+
+Step 3: Manual Credit Adjustment & Dispute Logging
+If the funds have not been credited or refunded within 48 hours of transaction initiation:
+- Verify that the beneficiary bank has not received the credit ledger entry.
+- Create a Chargeback / Refund Request in the dispute clearing portal.
+- If the disputed amount exceeds INR 50,000, Service Manager approval is strictly required before manual reversal execution.
+
+4. CUSTOMER COMMUNICATION PROTOCOL
+- Acknowledge complaint with official Incident Reference Number within 15 minutes.
+- Inform customer: "If your transaction failed due to network timeout, automatic reconciliation will refund the amount within T+1 working days."
+- Never promise instant cash refunds without settlement ledger confirmation.

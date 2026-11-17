@@ -1,0 +1,32 @@
+# CORE BANKING SERVICE LEVEL AGREEMENTS (SLA) & ESCALATION MATRIX
+Document ID: SLA-BANK-2024-V2
+Department: IT Service Management & Compliance
+Category: Service-level agreements
+Last Updated: July 2024
+
+1. INCIDENT SEVERITY CLASSIFICATION & TARGET RESOLUTION TIMES
+- Priority 1 (P1 - Critical):
+  * Scope: Complete outage of payment gateway, core banking switch, or UPI infrastructure affecting >10,000 users.
+  * Initial Response SLA: 15 minutes.
+  * Resolution SLA: 2 hours.
+  * Escalation: Immediately alert Head of Technology Operations, VP of Retail Banking, and Incident Commander.
+
+- Priority 2 (P2 - High):
+  * Scope: Significant degradation of a primary service (e.g., ATM cluster in major zone offline, mobile app intermittent 500 errors).
+  * Initial Response SLA: 30 minutes.
+  * Resolution SLA: 4 hours.
+  * Escalation: Lead Operations Engineer, Systems Team Lead.
+
+- Priority 3 (P3 - Medium):
+  * Scope: Individual customer transaction failures, single ATM down, merchant payment delay without systemic outage.
+  * Initial Response SLA: 2 hours.
+  * Resolution SLA: 24 hours.
+
+- Priority 4 (P4 - Low):
+  * Scope: Informational inquiries, minor UI glitches, general configuration requests.
+  * Initial Response SLA: 8 hours.
+  * Resolution SLA: 48 hours.
+
+2. PENALTIES & REGULATORY COMPLIANCE
+Auto-reversal failures past T+1 days incur compensation of INR 100 per day payable to the impacted customer under Central Banking Compensation Directives.
+All incident post-mortems for P1 incidents must be submitted to the Risk Committee within 72 hours of resolution.

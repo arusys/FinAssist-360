@@ -1,0 +1,23 @@
+# DIGITAL CHANNELS AUTHENTICATION & ACCESS TROUBLESHOOTING
+Document ID: SOP-DIGI-2024-08
+Department: Digital Banking Operations
+Category: Mobile and Internet banking issues
+Last Updated: August 2024
+
+1. MOBILE BANKING APPLICATION LOGIN FAILURES
+Common Root Causes:
+- Outdated application build requiring mandatory security patch upgrade.
+- SIM binding mismatch: Customer changed physical SIM or disabled SMS permissions on dual-SIM devices.
+- Jailbreak / Root detection: Security sandbox prevents application launch on modified OS environments.
+- Certificate Pinning failure: Intermediate proxy or corporate VPN altering SSL certificates.
+
+Standard Resolution Steps:
+1. Verify customer mobile number and active SIM slot matching registered records.
+2. Direct customer to clear app cache or reinstall latest version from official store (Google Play / Apple App Store).
+3. If account is locked after 3 consecutive invalid MPIN attempts, perform biometric unlock or initiate SMS OTP reset.
+4. For persistent server crashes (HTTP 502/503), check API Gateway cluster health and token auth microservice.
+
+2. INTERNET BANKING PORTAL ACCESS
+- Password Expiration: Passwords expire every 90 days in compliance with banking cybersecurity norms.
+- Two-Factor Authentication (2FA): OTP timeouts occur after 180 seconds.
+- Browser Compatibility: Supported on modern Chromium, WebKit, and Gecko engines with TLS 1.3 enabled.

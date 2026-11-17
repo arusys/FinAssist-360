@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: finassist360_backend
+    restart: always
+    environment:
+      - DATABASE_URL=sqlite:///./finassist360.db
+      - SECRET_KEY=finassist360-enterprise-banking-security-key-2025-token-secret
+      - LLM_PROVIDER=demo
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/../data
+      - backend_db:/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: finassist360_frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_db:

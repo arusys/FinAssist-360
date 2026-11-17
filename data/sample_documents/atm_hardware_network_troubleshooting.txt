@@ -1,0 +1,36 @@
+# ATM NETWORK & HARDWARE TROUBLESHOOTING MANUAL
+Document ID: SOP-OPS-ATM-2024-11
+Department: ATM Operations & Field Engineering
+Category: ATM troubleshooting
+Last Updated: November 2024
+
+1. ATM OPERATIONAL ARCHITECTURE
+Each automated teller machine (ATM) connects to the Central Switch via an encrypted leased line or redundant 4G/5G SD-WAN tunnel. The local ATM terminal controller monitors:
+- Cash Dispenser Module (CDM)
+- Encrypted PIN Pad (EPP)
+- Card Reader Module (Motorized/Dip)
+- Receipt Printer & Journal Printer
+- Cash Cassette Sensors (Low Cash, Cash Jam, Out of Cash)
+
+2. COMMON FAILURE CODES & DIAGNOSTIC STEPS
+Code D-01: Cash Jam / Dispenser Fault
+Symptom: Transaction initiated, account debited, but cash shutter fails to open or paper currency is caught in the transport belt.
+Action:
+1. Immediately place the terminal in Out-of-Service / Supervisory Mode remotely.
+2. Check internal sensor logs for "Reject Cassette Divert".
+3. If customer reports debit without cash, record ATM terminal ID, sequence number, and amount.
+4. Auto-reversal is initiated automatically during daily EOD cash purge if uncollected cash is detected in the purge bin.
+5. If difference persists during physical cash balancing, field engineer must submit cash balancing audit report within 24 hours.
+
+Code N-04: Central Switch Timeout / Host Communication Failure
+Symptom: ATM screen displays "Temporarily Out of Service" or "Unable to process transaction at this time".
+Action:
+1. Ping ATM Gateway IP from the central network monitoring station.
+2. If packet loss exceeds 20%, trigger failover to secondary LTE connection.
+3. If switch heartbeat fails for more than 5 consecutive cycles, notify Technical Support Engineer (P2 priority incident).
+
+3. SPARE PARTS & FIELD MAINTENANCE DISPATCH
+When hardware errors require field replacement (e.g. pick-module motor burnout):
+- Dispatch certified field engineering vendor with Service Request ticket.
+- Verify security tamper seals prior to opening the ATM safe door.
+- Service Level Agreement for metro ATMs: 4 hours. Non-metro: 8 hours.

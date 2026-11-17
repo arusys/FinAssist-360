@@ -1,0 +1,25 @@
+# DEBIT & CREDIT CARD TRANSACTION DECLINES AND DISPUTE POLICY
+Document ID: POL-CARD-2024-03
+Department: Cards & Fraud Risk Management
+Category: Debit and credit card support
+Last Updated: September 2024
+
+1. COMMON DECLINE RESPONSE CODES
+- Code 05 - Do Not Honor: Generic decline issued by the card issuer's risk engine. Typically caused by geographic anomaly, unusual ticket size, or high velocity transactions.
+- Code 51 - Insufficient Funds: Account available balance is less than transaction authorization request amount.
+- Code 54 - Expired Card: The expiry MM/YY provided during authorization does not match the card record.
+- Code 57 - Transaction Not Permitted: International usage or online e-commerce transactions disabled via customer mobile app controls.
+- Code 61 - Exceeds Withdrawal Limit: Customer has exceeded daily POS/ATM limit configured on the card tier.
+
+2. FRAUD DETECTION & COMPROMISED CARD PROTOCOL
+When suspicious transactions are identified:
+1. Immediately place a temporary authorization lock (Code 78 - Blocked Card) on the affected card.
+2. Send automated multi-channel alert (SMS & Push Notification) to registered mobile number asking the customer to confirm or deny the transaction.
+3. If confirmed unauthorized:
+   - Permanently cancel the card number.
+   - Issue a replacement virtual card instantly within the mobile application.
+   - Ship physical contactless chip card within 3 business days.
+   - Initiate chargeback claim with Visa/Mastercard/RuPay settlement networks.
+
+3. CHARGEBACK FILING DEADLINES
+Cardholders must submit formal dispute declarations within 60 calendar days from the statement transaction date. Temporary credit will be provided within 7 business days pending merchant representment.
